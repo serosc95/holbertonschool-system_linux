@@ -1,3 +1,4 @@
+#include <sys/types.h>
 #include "signals.h"
 
 /**
@@ -8,5 +9,6 @@ void (*current_handler_sigaction(void))(int)
 {
 	struct sigaction oldact;
 
-	return (sigaction(SIGINT, NULL, &oldact) ? NULL : oldact.sa_handler);
+	memset(&oldcat, 0, sizeof(oldcat));
+	return (sigaction(SIGINT, NULL, &oldcat) ? NULL : oldcat.sa_handler);
 }
