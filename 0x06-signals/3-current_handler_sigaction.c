@@ -9,6 +9,5 @@ void (*current_handler_sigaction(void))(int)
 {
 	struct sigaction oldact;
 
-	memset(&oldcat, 0, sizeof(oldcat));
-	return (sigaction(SIGINT, NULL, &oldcat) ? NULL : oldcat.sa_handler);
+	return (sigaction(SIGINT, NULL, &oldact) != -1 ? oldact.sa_handler : NULL);
 }
